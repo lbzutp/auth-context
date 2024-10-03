@@ -7,6 +7,7 @@ Este es un ejemplo básico de cómo implementar autenticación en una aplicació
 Antes de ejecutar el código, debes seguir los siguientes pasos para configurar Firebase:
 
 1. **Crear una cuenta en Firebase**.
+⚠️ Importante: puede que el correo de la utp moleste. Si es el caso deben crear una cuenta de google
 2. **Crear un proyecto** en la consola de Firebase.
 3. Ir a la sección de **Autenticación** y habilitar el método de autenticación con **correo electrónico**.
 4. Crear una cuenta básica de prueba, por ejemplo:
