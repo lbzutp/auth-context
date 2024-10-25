@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = 'EXTRAEN ESTO DE SU CUENTA DE FIREBASE. EL LOGIN NO FUNCIONA SIN ESTO'; 
+const apiKey = 'LA API DE FIREBASE DE USTEDES'; 
 
 
 // ya que puede ser que se necesite en otros lugares, se crea una funcion que se pueda reutilizar

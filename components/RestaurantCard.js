@@ -24,7 +24,7 @@ const RestaurantCard = ({ image, name, stars, description, category }) => {
     <SafeAreaView>
         <View style={styles.card}>
       {/* Image at the top */}
-      <Image source={image} style={styles.image} />
+      {/* <Image source={image} style={styles.image} /> */}
 
       {/* Restaurant Info */}
       <View style={styles.infoContainer}>

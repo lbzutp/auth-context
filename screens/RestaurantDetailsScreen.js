@@ -1,18 +1,26 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Assuming you're using Expo for icons
-
+import { getRestaurantById } from '../utils/db';
 const RestaurantDetailsScreen = ({ route, navigation }) => {
   // Access the restaurant details passed via navigation
-  const { image, name, description, category, stars, location, contactInfo, schedule } = route.params;
-
+  const { image, name, description, category, stars, location, contactInfo, schedule, id } = route.params;
   // State to track if restaurant is favorited
   const [isFavorited, setIsFavorited] = useState(false);
-
+  
+  const [fetchedRestaurant, setFetchedRestaurant] = useState([]);
   // Toggle favorite status
   const toggleFavorite = () => {
     setIsFavorited(!isFavorited);
   };
+
+  useState(() => {
+    async function fetchRestaurant() {
+      const restaurant = await getRestaurantById(id);
+      setFetchedRestaurant(restaurant);
+    }
+    fetchRestaurant();
+  }, [])
 
   // Set the header button using useLayoutEffect
   useLayoutEffect(() => {

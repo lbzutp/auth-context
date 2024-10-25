@@ -1,7 +1,10 @@
+// Importamos axios
+const axios = require('axios');
 
-export const restaurants = [
+// definimos la data que queremos subir a firebase
+// si quieren cambiar la data o cambiar campos lo puedenhacer facilmente
+const restaurants = [
   {
-    image: require('../assets/bistro.png'),
     name: 'Bistro Delight',
     stars: 4,
     description: 'A delightful bistro with an emphasis on seasonal ingredients.',
@@ -11,7 +14,6 @@ export const restaurants = [
     schedule: 'Mon-Sat: 9:00 AM - 10:00 PM, Sun: Closed',
   },
   {
-    image: require('../assets/sushi.png'),
     name: 'The Sushi Bar',
     stars: 5,
     description: 'A premium sushi bar offering the freshest catch of the day.',
@@ -21,7 +23,6 @@ export const restaurants = [
     schedule: 'Daily: 11:00 AM - 11:00 PM',
   },
   {
-    image: require('../assets/grill.png'),
     name: 'Grill Master',
     stars: 3,
     description: 'A cozy grill spot with the best steaks in town.',
@@ -32,3 +33,23 @@ export const restaurants = [
   },
   // Add more restaurant objects as needed
 ];
+
+// este metodo se encarga de subir la data a firebase
+const uploadDataToFirebase = async () => {
+  try {
+    // hacemos un put a la url de firebase con la data que queremos subir
+    // la data se sube en formato JSON
+    // esa url esta cmpuesta por la url de la base de datos
+    // y el nombre del archivo donde se va a guardar la data
+    const response = await axios.put(
+      'https://utp-login-default-rtdb.firebaseio.com/restaurants.json',
+      restaurants
+    );
+    console.log('Data subida de manera exitosa:', response.data);
+  } catch (error) {
+    console.error('Error subiendo la data', error);
+  }
+};
+
+// Llamamos el metodo para subir la data
+uploadDataToFirebase();

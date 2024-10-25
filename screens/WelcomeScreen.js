@@ -8,27 +8,18 @@ const backgroundImage = require('../assets/Welcome.jpeg');
 const WelcomeScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const authCtx = useContext(AuthContext); // Usar el contexto de autenticación. con esta linea carga el contexto de autenticacion
+  const authCtx = useContext(AuthContext); 
 
-  //funcion para manejar el login
-  //aqui se llega cuando se oprime el boton de login
   async function handleLogin() {
-    // validamos que exista un email y un password en los inputs
     if (!email || !password) {
-      // si no hay email o password mostramos un alerta
       Alert.alert('Error', 'Please enter both email and password', [{ text: 'OK' }]);
       return;
     }
 
     try {
-      const token = await login(email, password); // llamamos la utilidad de autenticacion
-      // si esta autenticacion tiene exito devuelve un token. El que devuelve esto es firebase
-      //el cual le pasamos al contexto
-
-      authCtx.login(token); // el token se pasa al contexto de autenticacion y lo cargamos con la funcion de login
-      // (por dentro de un setAuthToken(token))
-
-      navigation.navigate('MainTabs'); //si todo sale bien navegamos a la pantalla de MainTabs
+      const token = await login(email, password);
+      authCtx.login(token); 
+      navigation.navigate('MainTabs'); 
     } catch (error) {
       Alert.alert('Error', 'Login failed. Please try again.');
     }
